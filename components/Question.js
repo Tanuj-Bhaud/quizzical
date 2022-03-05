@@ -30,20 +30,29 @@ export default function Question() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       {questions.map((question) => {
         return (
-          <div className="flex flex-col items-center justify-center">
+          <div className="">
             <Ques question={question.question} />
 
             <div className="mt-2 mb-4 flex flex-row justify-center">
               {question.incorrectAnswers.map((answer) => {
-                return <Ans answer={answer} id={setid()} />
+                return (
+                  <div>
+                    <Ans answer={answer} id={setid()} />
+                  </div>
+                )
               })}
+
+              <button className="m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]">
+                {question.correctAnswer}
+              </button>
             </div>
           </div>
         )
       })}
+
       <CheckButton />
     </div>
   )

@@ -14,13 +14,15 @@ export default function Ans(props) {
   const aid = props.id
 
   return (
-    <button
-      onClick={handleClick}
-      id={aid}
-      style={styles}
-      className="m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]"
-    >
-      {props.answer}
-    </button>
+    <div>
+      <button
+        onClick={handleClick}
+        id={aid}
+        style={styles}
+        className="m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]"
+      >
+        {props.answer}
+      </button>
+    </div>
   )
 }
