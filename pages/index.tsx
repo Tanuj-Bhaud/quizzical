@@ -23,7 +23,6 @@ const Home: NextPage = () => {
           <h1 className="text-2xl font-bold text-[#293264]">Quizzical</h1>
           <br />
           <h2 className="text-xl text-[#293264]">
-            {' '}
             click here to start the quiz
           </h2>
           <Link href="home">
