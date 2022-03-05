@@ -1,0 +1,6 @@
+   {/* <button className='m-2 py-2 px-4 bg-[#D6DBF5] text-[#293264] font-semibold rounded-xl'>{}</button> */}
+
+        {/* <button className='m-2 py-2 px-4 bg-[#D6DBF5] text-[#293264] font-semibold rounded-xl'>asd</button>
+        <button className='m-2 py-2 px-4 border border-[#4D5B9E] text-[#293264] font-semibold rounded-xl'>Sowoa</button>
+        <button className='m-2 py-2 px-4 border border-[#4D5B9E]  font-semibold rounded-xl text-[#293264]'>Sufo man</button>
+        <button className='m-2 py-2 px-4 border border-[#4D5B9E] text-[#293264] font-semibold rounded-xl'> Transformers</button> */}
