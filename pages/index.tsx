@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <div className="">
       <Head>
-        <title>Create Next App</title>
+        <title>Quizzical</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
