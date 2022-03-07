@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
-export default function CheckButton() {
+export default function CheckButton({ selectedButtons, questions }) {
   const [score, setScore] = useState(``)
   const handleClick = () => {
-    return setScore(` You Scored ${0}/5 Correct Answers`)
+    const correctAnswers = questions.map((question) => {
+      return question.correctAnswer
+    })
+    let score = 0
+
+    //Verify how many elements between the two arrays are the same
+    selectedButtons.map((item, index) => {
+      if (item === correctAnswers[index]) score += 1
+    })
+
+    return setScore(` You Scored ${score}/5 Correct Answers`)
   }
   return (
     <div className="flex flex-row items-center justify-center">
