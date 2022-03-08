@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Ques from './Ques'
-import Ans from './Ans'
+
+import Answer from './Answer'
 import CheckButton from './CheckButton'
 
-export default function Question() {
+export default function App() {
   const [questions, setQuestions] = useState([])
   const [selectedButtons, setSelectedButtons] = useState([])
-  useEffect(() => {
-    console.log({ selectedButtons })
-  }, [selectedButtons])
+
   useEffect(() => {
     axios
       .get('https://api.trivia.willfry.co.uk/questions')
       .then((res) => {
         console.log(res.data)
         const qData = res.data
+        console.log(qData)
+        setSelectedButtons([])
         qData.map((q) => {
           // This is just setting the default state, doing it here instead of at the top cause the number of questions could change
-          setSelectedButtons((prev) => [...prev, { selected: '', key: '' }])
+          setSelectedButtons((prev) => [...prev, ''])
 
           // Add incorrectAnswers and correctAnswer to the question object as answers and shuffle them so answer isn't always at the last
           q.answers = [...q.incorrectAnswers, q.correctAnswer].sort(
@@ -35,18 +35,22 @@ export default function Question() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {questions.map((question, index) => {
+      {JSON.stringify(selectedButtons)}
+
+      {questions.map((question, qindex) => {
         return (
-          <div className="" key={index}>
-            <Ques question={question.question + ` ${question.correctAnswer}`} />
+          <div className="" key={qindex}>
+            <h3 className=" text-center text-2xl font-bold text-[#293264]">
+              {question.question + ` ${question.correctAnswer}`}
+            </h3>
 
             <div className="mt-2 mb-4 flex flex-row justify-center">
-              {question.answers.map((answer, index) => {
+              {question.answers.map((answer, aindex) => {
                 return (
-                  <Ans
+                  <Answer
                     answer={answer}
-                    correct={question.correctAnswer}
-                    key={index}
+                    key={aindex}
+                    questionPosition={qindex}
                     selectedButtons={selectedButtons}
                     setSelectedButtons={setSelectedButtons}
                   />
@@ -61,7 +65,7 @@ export default function Question() {
         )
       })}
 
-      <CheckButton />
+      <CheckButton questions={questions} selectedButtons={selectedButtons} />
     </div>
   )
 }
