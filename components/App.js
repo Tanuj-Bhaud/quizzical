@@ -35,13 +35,11 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {JSON.stringify(selectedButtons)}
-
       {questions.map((question, qindex) => {
         return (
           <div className="" key={qindex}>
             <h3 className=" text-center text-2xl font-bold text-[#293264]">
-              {question.question + ` ${question.correctAnswer}`}
+              {question.question}
             </h3>
 
             <div className="mt-2 mb-4 flex flex-row justify-center">
