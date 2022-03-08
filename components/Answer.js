@@ -22,9 +22,10 @@ export default function Answer({
   return (
     <button
       onClick={handleClick}
-      className={`    ${
-        selectedButtons[questionPosition] === answer ? 'bg-[#D6DBF5]' : ''
-      } m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]`}
+      className={`    
+      ${selectedButtons[questionPosition] === answer ? 'bg-[#D6DBF5]' : ''}
+      m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]
+`}
     >
       {answer}
     </button>
