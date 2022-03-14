@@ -10,7 +10,9 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get('https://api.trivia.willfry.co.uk/questions')
+      .get(
+        'https://thingproxy.freeboard.io/fetch/https://api.trivia.willfry.co.uk/questions'
+      )
       .then((res) => {
         console.log(res.data)
         const qData = res.data
