@@ -4,9 +4,6 @@ import { nanoid } from 'nanoid'
 import QuestionWithOptions from './QuestionWithOptions'
 
 export default function App() {
-  const [questions, setQuestions] = useState([])
-  const [selectedButtons, setSelectedButtons] = useState([])
-
   const [questionData, setQuestionData] = React.useState([])
   const [pageFlags, setPageFlags] = React.useState({
     isStartPage: true,
