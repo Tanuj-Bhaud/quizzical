@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
+
 import { nanoid } from 'nanoid'
-import Answer from './Answer'
-import CheckButton from './CheckButton'
 import QuestionWithOptions from './QuestionWithOptions'
 
 export default function App() {
@@ -54,10 +52,9 @@ export default function App() {
 
     //change the page
     setPageFlags((prevFlags) => {
-      return { correctAnswerCount: 0 }
+      return { isStartPage: false, isAnswerPage: false, correctAnswerCount: 0 }
     })
   }
-
   function onOptionClick(qid, optid) {
     //
     setQuestionData((preQuestionData) => {
@@ -134,18 +131,26 @@ export default function App() {
   return (
     <div>
       {pageFlags.isStartPage ? (
-        <button onClick={fetchQuestions}>Start Quiz</button>
+        <button
+          className="mt-4 rounded-md bg-[#4D5B9E] p-3 text-white"
+          onClick={fetchQuestions}
+        >
+          Start Quiz
+        </button>
       ) : (
         <div id="questions-page">
           {questionElements}
-          <div className="buttonAndText" id="buttonAndText">
+          <div
+            className="flex w-screen items-center justify-center"
+            id="buttonAndText"
+          >
             {pageFlags.isAnswerPage && (
               <h1 className="question">
                 You Scored {pageFlags.correctAnswerCount}/5 correct Answers{' '}
               </h1>
             )}
             <button
-              className="checkAnsButton"
+              className="ml-4 mt-2 rounded-md bg-[#4D5B9E] p-3 text-white"
               onClick={checkAnswersOrPlayAgain}
             >
               {!pageFlags.isAnswerPage ? 'Check Answers' : 'Play Again'}
@@ -156,64 +161,3 @@ export default function App() {
     </div>
   )
 }
-//   useEffect(() => {
-//     axios
-//       .get(
-//         'https://thingproxy.freeboard.io/fetch/https://api.trivia.willfry.co.uk/questions'
-//       )
-//       .then((res) => {
-//         console.log(res.data)
-//         const qData = res.data
-//         console.log(qData)
-//         setSelectedButtons([])
-//         qData.map((q) => {
-//           // This is just setting the default state, doing it here instead of at the top cause the number of questions could change
-//           setSelectedButtons((prev) => [...prev, ''])
-
-//           // Add incorrectAnswers and correctAnswer to the question object as answers and shuffle them so answer isn't always at the last
-//           q.answers = [...q.incorrectAnswers, q.correctAnswer].sort(
-//             () => Math.random() - 0.5
-//           )
-//         })
-
-//         setQuestions(qData)
-//       })
-//       .catch((err) => {
-//         console.log(err)
-//       })
-//   }, [])
-
-//   return (
-//     <div className="flex flex-col items-center justify-center">
-//       {questions.map((question, qindex) => {
-//         return (
-//           <div className="" key={qindex}>
-//             <h3 className=" text-center text-2xl font-bold text-[#293264]">
-//               {question.question}
-//             </h3>
-
-//             <div className="mt-2 mb-4 flex flex-row justify-center">
-//               {question.answers.map((answer, aindex) => {
-//                 return (
-//                   <Answer
-//                     answer={answer}
-//                     key={aindex}
-//                     questionPosition={qindex}
-//                     selectedButtons={selectedButtons}
-//                     setSelectedButtons={setSelectedButtons}
-//                   />
-//                 )
-//               })}
-
-//               {/* <button className="m-2 rounded-xl border border-[#4D5B9E] py-2 px-4 font-semibold text-[#293264]">
-//                 {question.correctAnswer}
-//               </button> */}
-//             </div>
-//           </div>
-//         )
-//       })}
-
-//       <CheckButton questions={questions} selectedButtons={selectedButtons} />
-//     </div>
-//   )
-// }

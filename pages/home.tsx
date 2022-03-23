@@ -8,8 +8,6 @@ export default function Home() {
     <div>
       <img className="float-right h-[297px] w-[235px]" src="blob1.svg" alt="" />
       <div className="flex w-full flex-col items-center justify-center ">
-        {/* iterate through questions and load them in view */}
-
         <App />
       </div>
 
